@@ -6,8 +6,13 @@ import java.util.Set;
 public class Person {
 
 	//do I need it as public
-	String [] preList = new String [86];
-	String [] postList = new String [86];
+	String [] preList = new String [84];
+	String [] postList = new String [84];
+	
+	String [] preOnly = new String[13];
+	String [] postOnly = new String [18];
+	String [] pre = new String [53];
+	String [] post = new String [53];
 	String name;
 	String id; 
 	String preForm = "";
@@ -18,6 +23,37 @@ public class Person {
 	{
 		this.name = name;
 		this.id = id;
+	}
+	public void rearrangeValues (HashMap <Integer,Integer> typeMapping)
+	{
+		//0 is both, 1 is pre, 2 is post
+		int preOnlyCounter = 0;
+		int postOnlyCounter = 0;
+		int prePostCounter = 0; 
+		int currType = 0;
+		
+		for (int i = 0; i < preList.length; i++)
+		{
+			currType = typeMapping.get(i);
+			
+			if (currType == 0)
+			{
+				pre[prePostCounter] = preList[i];
+				post[prePostCounter] = postList[i];
+				prePostCounter++;
+			}
+			else if (currType == 1)
+			{
+				preOnly[preOnlyCounter] = preList[i];
+				preOnlyCounter++;
+			}
+			else
+			{
+				postOnly[postOnlyCounter] = postList[i];
+				postOnlyCounter++;
+			}
+		}
+		return;
 	}
 	public void setValues (String [] currArray, HashMap <String, HashMap <Integer, String>> myMap)
 	{

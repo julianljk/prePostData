@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Database {
 	String name;
-	List <Person> myPlayerList = new ArrayList <Person>(); 
+	ArrayList <Person> myPlayerList = new ArrayList <Person>(); 
 	
 	public Database (String name)
 	{
